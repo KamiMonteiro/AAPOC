@@ -14,20 +14,21 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary via-secondary to-hope backdrop-blur-md shadow-lg font-nav">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         <a href="#inicio" className="flex items-center gap-2">
-          <span className="text-2xl font-display font-bold text-primary">AAPOC</span>
-          <span className="text-sm text-muted-foreground font-body hidden sm:block">Cuiabá - MT</span>
+          <span className="text-2xl font-extrabold tracking-wide text-white drop-shadow-sm">
+            AAPOC
+          </span>
         </a>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
+                className="relative text-sm font-semibold text-white/90 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-white after:transition-all hover:after:w-full"
               >
                 {l.label}
               </a>
@@ -37,7 +38,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-white"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -47,13 +48,13 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-card border-b border-border">
+        <div className="md:hidden bg-gradient-to-r from-primary via-secondary to-hope border-t border-white/20">
           <ul className="flex flex-col py-4 px-6 gap-3">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="block text-base font-semibold text-foreground/80 hover:text-primary"
+                  className="block text-base font-semibold text-white/95 hover:text-white"
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
