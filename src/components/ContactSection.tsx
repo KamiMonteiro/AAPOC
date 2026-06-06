@@ -21,18 +21,25 @@ const ContactSection = () => {
           </div>
 
           <div className="text-center">
-            <div className="w-14 h-14 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-              <Phone className="w-6 h-6 text-secondary-foreground" />
-            </div>
-            <h3 className="font-bold text-lg">Telefone</h3>
-            <p className="text-sm text-primary-foreground/70 mt-2">
-              Entre em contato pelo<br />Instagram ou telefone
-            </p>
+            <a
+              href="https://api.whatsapp.com/send/?phone=5565999162284&text&type=phone_number&app_absent=0&utm_source=ig"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="w-14 h-14 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-6 h-6 text-secondary-foreground" />
+              </div>
+              <h3 className="font-bold text-lg">WhatsApp</h3>
+              <p className="text-sm text-primary-foreground/70 mt-2">
+                65 99216-2284
+              </p>
+            </a>
           </div>
 
           <div className="text-center">
             <a
-              href="https://instagram.com/aapocmt"
+              href="https://www.instagram.com/aapoc.oficial/"
               target="_blank"
               rel="noopener noreferrer"
               className="block group"

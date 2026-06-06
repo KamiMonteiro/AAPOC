@@ -1,4 +1,5 @@
 import { Heart, HandHeart, QrCode } from "lucide-react";
+import VolunteerForm from "@/components/VolunteerForm";
 
 const HelpSection = () => {
   return (
@@ -22,7 +23,7 @@ const HelpSection = () => {
             </div>
             <h3 className="text-2xl font-display font-bold text-foreground">Seja Voluntário</h3>
             <p className="text-muted-foreground mt-3 leading-relaxed">
-              Junte-se aos nossos 20 voluntários, todos ex-pacientes que entendem a jornada do câncer. 
+              Junte-se aos nossos 20 voluntários, todos ex-pacientes que entendem a jornada do câncer.
               Sua experiência e dedicação podem fazer a diferença na vida de alguém.
             </p>
             <ul className="mt-4 space-y-2 text-sm text-foreground/80">
@@ -39,12 +40,7 @@ const HelpSection = () => {
                 Suporte administrativo
               </li>
             </ul>
-            <a
-              href="#contato"
-              className="inline-flex items-center gap-2 mt-6 bg-primary text-primary-foreground font-bold px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
-            >
-              Quero ser voluntário
-            </a>
+            <VolunteerForm />
           </div>
 
           {/* Doação */}
@@ -54,7 +50,7 @@ const HelpSection = () => {
             </div>
             <h3 className="text-2xl font-display font-bold text-foreground">Doação Financeira</h3>
             <p className="text-muted-foreground mt-3 leading-relaxed">
-              Sua doação ajuda a manter nossos serviços de saúde, cestas básicas, 
+              Sua doação ajuda a manter nossos serviços de saúde, cestas básicas,
               consultas e exames para pacientes em vulnerabilidade.
             </p>
 
