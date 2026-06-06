@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         display: ["Playfair Display", "serif"],
         body: ["Nunito", "sans-serif"],
+        nav: ["Montserrat", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
