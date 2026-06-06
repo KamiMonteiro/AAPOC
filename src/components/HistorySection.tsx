@@ -18,7 +18,7 @@ const HistorySection = () => {
                 <Heart className="w-6 h-6 text-secondary-foreground" />
               </div>
               <div>
-                <h3 className="text-2xl font-display font-bold text-foreground">A AAPOC nasceu do amor</h3>
+                <h3 className="text-2xl font-display font-bold text-foreground">A AAPOC NASCE DA VONTADE DE AJUDAR AO PRÓXIMO</h3>
                 <p className="text-muted-foreground mt-2 leading-relaxed">
                   A associação nasceu da iniciativa de <strong>Janaína</strong>, ela própria uma paciente oncológica, 
                   com a missão de levar <strong>dignidade, amor e esperança</strong> àqueles que enfrentam a jornada 

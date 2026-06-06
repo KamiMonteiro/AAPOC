@@ -40,6 +40,14 @@ const professionals = [
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=700&fit=crop",
     color: "from-accent/80 to-accent/40",
   },
+   {
+    icon:   Scale,
+    title: "4 profissao aqui",
+    description:
+      "A QUAARTA PROFISSAO AQUI",
+    image: "",
+    color: "from-accent/80 to-accent/40",
+  },
 ];
 
 const ServicesSection = () => {
