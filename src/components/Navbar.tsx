@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const links = [
   { label: "Início", href: "#inicio" },
@@ -17,8 +18,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary via-secondary to-hope backdrop-blur-md shadow-lg font-nav">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
-        <a href="#inicio" className="flex items-center gap-2">
-          <span className="text-2xl font-extrabold tracking-wide text-white drop-shadow-sm">
+        <a href="#inicio" className="flex items-center gap-3">
+          <img src={logo} alt="AAPOC logo" className="h-12 w-45 rounded-2xl bg-white/20 p-1 object-contain" />
+          <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-white drop-shadow-sm">
             AAPOC
           </span>
         </a>

@@ -1,4 +1,5 @@
 import heroBg from "@/assets/hero-bg.jpg";
+import logo from "@/assets/logo.svg";
 import { Heart, ArrowDown } from "lucide-react";
 
 const HeroSection = () => {

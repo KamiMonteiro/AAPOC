@@ -1,0 +1,13 @@
+<svg width="260" height="80" viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C91E70" />
+      <stop offset="100%" stop-color="#5B2D91" />
+    </linearGradient>
+  </defs>
+  <rect width="260" height="80" rx="20" fill="white" opacity="0" />
+  <circle cx="40" cy="40" r="28" fill="url(#logoGradient)" />
+  <path d="M40 16C50.4934 16 59 24.5066 59 35H52C52 30.0294 48.9706 27 44 27C39.0294 27 36 30.0294 36 35V56H44V35C44 31.6863 46.6863 29 50 29C53.3137 29 56 31.6863 56 35C56 38.3137 53.3137 41 50 41H42C40.3431 41 39 39.6569 39 38V31H31V38C31 47.9411 38.0589 55 48 55C57.9411 55 65 47.9411 65 38C65 28.0589 57.9411 21 48 21C46.3431 21 45 22.3431 45 24V31H40V16Z" fill="white" opacity="0.9" />
+  <text x="78" y="40" fill="#27272A" font-family="Inter, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.04em">AAPOC</text>
+  <text x="78" y="60" fill="#52606D" font-family="Inter, sans-serif" font-size="12" letter-spacing="0.02em">Associação de Apoio</text>
+</svg>

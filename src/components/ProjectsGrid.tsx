@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import colon from "@/assets/colon_projeto_2026.png";
 
 type Project = {
   title: string;
@@ -9,6 +10,14 @@ type Project = {
 };
 
 const defaultProjects: Project[] = [
+  {
+    title: "Projeto Cólon e Esperança",
+    monthYear: "2026",
+    image: colon,
+    alt: "Projeto Cólon e Esperança",
+    description:
+      "Doação de bolsas de colostomia para pacientes oncológicos. A dignidade começa no cuidado.",
+  },
   {
     title: "Casa Transitória Carmen Lúcia",
     monthYear: "Jan/2026",
