@@ -1,13 +1,6 @@
-import { useState } from "react";
-import { Heart, Users, Calendar, Home, ChevronDown } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import ProjectsGrid from "./ProjectsGrid";
+import { Heart, Users, Calendar, Home } from "lucide-react";
 
 const HistorySection = () => {
-  const [showProjects, setShowProjects] = useState(false);
-
   return (
     <section id="historia" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
@@ -50,36 +43,6 @@ const HistorySection = () => {
                 <Home className="w-8 h-8 text-hope mx-auto mb-2" />
                 <div className="font-bold text-foreground">Casa Transitória</div>
                 <div className="text-xs text-muted-foreground">"Carmen Lúcia Perez de Faria"</div>
-              </div>
-            </div>
-
-            <div className="mt-8 flex justify-center">
-              <Button
-                variant="secondary"
-                className="inline-flex items-center gap-2"
-                onClick={() => setShowProjects((prev) => !prev)}
-                aria-expanded={showProjects}
-              >
-                Ver projetos
-                <ChevronDown
-                  className={cn(
-                    "h-4 w-4 transition-transform duration-200",
-                    showProjects && "rotate-180",
-                  )}
-                />
-              </Button>
-            </div>
-
-            <div
-              className={cn(
-                "overflow-hidden transition-all duration-300 ease-in-out",
-                showProjects ? "max-h-[2000px] mt-8 animate-accordion-down" : "max-h-0",
-              )}
-              aria-hidden={!showProjects}
-            >
-              <div className={cn("rounded-3xl border border-border bg-card p-6 shadow-sm", !showProjects && "opacity-0")}> 
-                <h3 className="text-2xl font-display font-bold text-foreground mb-6">Nossos Projetos</h3>
-                <ProjectsGrid />
               </div>
             </div>
 

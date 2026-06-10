@@ -7,6 +7,7 @@ const links = [
   { label: "Calendário", href: "#calendario" },
   { label: "Serviços", href: "#servicos" },
   { label: "Nossa História", href: "#historia" },
+  { label: "Projetos", href: "#projetos" },
   { label: "Galeria", href: "#galeria" },
   { label: "Como Ajudar", href: "#ajudar" },
   { label: "Contato", href: "#contato" },
@@ -31,7 +32,7 @@ const Navbar = () => {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative text-lg font-semibold text-white/90 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-white after:transition-all hover:after:w-full"
+                className="relative text-sm font-semibold text-white/90 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-white after:transition-all hover:after:w-full"
               >
                 {l.label}
               </a>
