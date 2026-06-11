@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo-branco.svg";
+import logo from "@/assets/logo-letra-branca-fundo-transparente.svg";
 
 const links = [
   { label: "Início", href: "#inicio" },
@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary via-secondary to-hope backdrop-blur-md shadow-lg font-nav">
       <div className="container mx-auto flex items-center justify-between px-4">
         <a href="#inicio" className="flex items-center gap-3">
-          <img src={logo} alt="AAPOC logo" className="h-[80px] w-[200px] rounded-2xl p-1 object-contain" />
+          <img src={logo} alt="AAPOC logo" className="h-[70px] w-[250px] rounded-2xl p-1 object-contain" />
           {/* <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-white drop-shadow-sm">
             AAPOC
           </span> */}
