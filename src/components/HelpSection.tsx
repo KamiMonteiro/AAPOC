@@ -1,5 +1,6 @@
-import { Heart, HandHeart, QrCode } from "lucide-react";
+import { Heart, HandHeart } from "lucide-react";
 import VolunteerForm from "@/components/VolunteerForm";
+import qrCodePix from "@/assets/qrcode.png"; // ajuste o nome do arquivo
 
 const HelpSection = () => {
   return (
@@ -54,12 +55,16 @@ const HelpSection = () => {
               consultas e exames para pacientes em vulnerabilidade.
             </p>
 
-            {/* QR Code placeholder */}
+            {/* QR Code PIX */}
             <div className="mt-6 bg-card rounded-xl p-6 border border-border text-center">
-              <QrCode className="w-32 h-32 text-foreground/30 mx-auto" />
+              <img
+                src={qrCodePix}
+                alt="QR Code PIX AAPOC"
+                className="w-40 h-40 mx-auto object-contain"
+              />
               <p className="text-sm font-bold text-foreground mt-3">Escaneie o QR Code PIX</p>
-              <p className="text-xs text-muted-foreground mt-1">CNPJ da AAPOC MT</p>
-              <p className="text-xs text-muted-foreground">(QR Code será disponibilizado em breve)</p>
+              <p className="text-xs text-muted-foreground mt-1">AAPOC — CNPJ: 41.231.787/0001-80</p>
+              <p className="text-sm font-bold text-foreground mt-3">Faça um Pix e mude vidas ❤️</p>
             </div>
           </div>
         </div>
