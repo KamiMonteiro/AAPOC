@@ -66,11 +66,11 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto px-12">
+        <div className="relative px-10">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-6">
               {professionals.map((p) => (
-                <CarouselItem key={p.title} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={p.title} className="pl-6 basis-4/5 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                   <div className="relative rounded-2xl overflow-hidden group h-[420px] shadow-lg border border-border">
                     <img
                       src={p.image}
@@ -79,7 +79,6 @@ const ServicesSection = () => {
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${p.color} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                       <div className="flex items-center gap-2 mb-2">
                         <p.icon className="w-5 h-5" />
