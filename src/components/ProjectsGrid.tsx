@@ -51,12 +51,12 @@ const colonModal: ProjectModal = {
       ],
     },
     {
-      heading: "Justificativa",
+      heading: "Justificativa", // Por que esse projeto é importante?
       content:
         "A bolsa de colostomia representa dignidade, autonomia e qualidade de vida. Sem acesso adequado às bolsas, muitos pacientes enfrentam sofrimento, isolamento social e extrema vulnerabilidade emocional. O projeto Cólon e Esperança busca devolver esperança e acolhimento aos pacientes que enfrentam a luta contra o câncer.",
     },
     {
-      heading: "Como Ajudar",
+      heading: "Como Ajudar", // O que as pessoas podem fazer para contribuir?
       content: [
         "Bolsas de colostomia",
         "Placas adesivas",
@@ -67,7 +67,7 @@ const colonModal: ProjectModal = {
       ],
     },
     {
-      heading: "Público-Alvo",
+      heading: "Público-Alvo",// Quem são os beneficiários diretos do projeto?
       content:
         "Pacientes oncológicos ostomizados em situação de vulnerabilidade social atendidos pela AAPOC.",
     },
