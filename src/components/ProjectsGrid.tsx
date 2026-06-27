@@ -468,7 +468,7 @@ const defaultProjects: Project[] = [
   {
     title: "Casa de Apoio",
     monthYear: "Jan/2026",
-    image: "",
+    image: "/img/casa_apoio.jpeg",
     alt: "Casa de Apoio Carmen Lúcia",
     description:
       "Alojamento transitório 100% gratuito para pacientes oncológicos de outros municípios e seus acompanhantes aguardarem ou pernoctarem durante o tratamento em Cuiabá.",
@@ -477,7 +477,7 @@ const defaultProjects: Project[] = [
   {
     title: "Além da Renda",
     monthYear: "Ativo",
-    image: "",
+    image: "/img/renda.jpg",
     alt: "Projeto Além da Renda",
     description:
       "Doação de sutiãs com próteses acopladas para mulheres assistidas que passaram por mastectomia, devolvendo autoestima e conforto.",
@@ -486,7 +486,7 @@ const defaultProjects: Project[] = [
   {
     title: "Informação Salva-Vidas",
     monthYear: "Ativo",
-    image: "",
+    image: "/img/salva_vidas.jpeg",
     alt: "Projeto Informação Salva-Vidas",
     description:
       "Palestras gratuitas de conscientização sobre prevenção do câncer em empresas, escolas e instituições, com distribuição de panfletos e testemunhos reais de superação.",
@@ -495,7 +495,7 @@ const defaultProjects: Project[] = [
   {
     title: "Bem-Estar APOC",
     monthYear: "Ativo",
-    image: "",
+    image: "/img/bem_estar.jpg",
     alt: "Projeto Bem-Estar APOC",
     description:
       "Rede de parceiros voluntários — dentistas, nutricionistas, psicólogos, fisioterapeutas oncológicos, laboratórios e farmácias — que oferecem atendimento especializado e descontos aos assistidos.",
@@ -504,7 +504,7 @@ const defaultProjects: Project[] = [
   {
     title: "Amor que Alimenta e Aquece",
     monthYear: "Desde 2022",
-    image: "",
+    image:"/img/caldos.jpeg",
     alt: "Amor que Alimenta e Aquece",
     description:
       "Mais de 37.000 caldos nutritivos entregues a pacientes em tratamento no ITC/Cuiabá. Preparados às segundas, quartas e quintas por voluntárias da AAPOC.",
@@ -513,7 +513,7 @@ const defaultProjects: Project[] = [
   {
     title: "Dia A (Dia APOC)",
     monthYear: "Mensal",
-    image: "",
+    image: "/img/dia_a.jpeg",
     alt: "Dia A - Dia APOC",
     description:
       "Encontro mensal realizado no último sábado do mês com palestras temáticas, distribuição de sacolões, suplementação alimentar e mimos para os assistidos.",
@@ -522,7 +522,7 @@ const defaultProjects: Project[] = [
   {
     title: "Banco de Lenços e Perucas",
     monthYear: "Ativo",
-    image: "",
+    image: "/img/perucas.jpeg",
     alt: "Banco de Lenços e Perucas",
     description:
       "Maior banco de perucas de cabelos naturais do Mato Grosso, com quase 200 unidades. Empréstimo de perucas e doação de lenços e turbantes para pacientes em queda capilar.",
