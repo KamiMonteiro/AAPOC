@@ -9,6 +9,7 @@ const links = [
   { label: "Nossa História", href: "#historia" },
   { label: "Projetos", href: "#projetos" },
   { label: "Galeria", href: "#galeria" },
+   { label: "Produtos", href: "#produtos" },
   { label: "Como Ajudar", href: "#ajudar" },
   { label: "Contato", href: "#contato" },
 ];

@@ -16,7 +16,7 @@ const ContactSection = () => {
             </div>
             <h3 className="font-bold text-lg">Endereço</h3>
             <p className="text-sm text-primary-foreground/70 mt-2 leading-relaxed">
-              Av. São Sebastião, 4160<br />São Mateus, Cuiabá - MT
+              Av. São Sebastião, 4160<br />Quilombo, Cuiabá - MT
             </p>
           </div>
 

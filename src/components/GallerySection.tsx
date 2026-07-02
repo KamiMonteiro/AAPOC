@@ -15,12 +15,21 @@ const galleryPhotos: GalleryPhoto[] = [
     src: "/img/momentos_2.jpeg",
     alt: "Foto de eventos da instituição",
   },
+ 
+  {
+    src: "/img/momentos_44.jpeg",
+    alt: "Foto de eventos da instituição",
+  },
   {
     src: "/img/momentos_4.jpeg",
     alt: "Foto de eventos da instituição",
   },
   {
     src: "/img/momentos_5.jpeg",
+    alt: "Foto de eventos da instituição",
+  },
+   {
+    src: "/img/momentos_46.jpeg",
     alt: "Foto de eventos da instituição",
   },
   {
@@ -186,6 +195,22 @@ const galleryPhotos: GalleryPhoto[] = [
   },
   {
     src: "/img/momentos_43.jpeg",
+    alt: "Foto de eventos da instituição",
+  },
+  {
+    src: "/img/momentos_45.jpeg",
+    alt: "Foto de eventos da instituição",
+  },
+   {
+    src: "/img/momentos_47.jpeg",
+    alt: "Foto de eventos da instituição",
+  },
+   {
+    src: "/img/momentos_48.jpeg",
+    alt: "Foto de eventos da instituição",
+  },
+   {
+    src: "/img/momentos_49.jpeg",
     alt: "Foto de eventos da instituição",
   },
 
