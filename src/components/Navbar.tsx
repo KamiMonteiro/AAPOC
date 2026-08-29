@@ -4,12 +4,13 @@ import logo from "@/assets/logo-letra-branca-fundo-transparente.svg";
 
 const links = [
   { label: "Início", href: "#inicio" },
-  { label: "Calendário", href: "#calendario" },
+  { label: "Eventos", href: "#eventos" },
+  { label: "Cores do Ano", href: "#calendario" },
   { label: "Serviços", href: "#servicos" },
   { label: "Nossa História", href: "#historia" },
   { label: "Projetos", href: "#projetos" },
   { label: "Galeria", href: "#galeria" },
-   { label: "Produtos", href: "#produtos" },
+  { label: "Produtos", href: "#produtos" },
   { label: "Como Ajudar", href: "#ajudar" },
   { label: "Contato", href: "#contato" },
 ];
@@ -22,13 +23,10 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-4">
         <a href="#inicio" className="flex items-center gap-3">
           <img src={logo} alt="AAPOC logo" className="h-[70px] w-[250px] rounded-2xl p-1 object-contain" />
-          {/* <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-white drop-shadow-sm">
-            AAPOC
-          </span> */}
         </a>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-7">
+        <ul className="hidden lg:flex items-center gap-5 xl:gap-7">
           {links.map((l) => (
             <li key={l.href}>
               <a
@@ -43,7 +41,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-white"
+          className="lg:hidden text-white"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -53,7 +51,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-gradient-to-r from-primary via-secondary to-hope border-t border-white/20">
+        <div className="lg:hidden bg-gradient-to-r from-primary via-secondary to-hope border-t border-white/20">
           <ul className="flex flex-col py-4 px-6 gap-3">
             {links.map((l) => (
               <li key={l.href}>
