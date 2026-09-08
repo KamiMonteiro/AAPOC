@@ -3,7 +3,7 @@ import { useState } from "react";
 type Campaign = {
   cancer: string;
   ribbon: string;
-  color: string; // hex
+  color: string; // hex or gradient
 };
 
 type MonthData = {
@@ -13,53 +13,95 @@ type MonthData = {
 };
 
 const months: MonthData[] = [
-  { month: "Janeiro", short: "Jan", campaigns: [
-    { cancer: "Colo do Útero", ribbon: "Verde", color: "#16a34a" },
-  ]},
-  { month: "Fevereiro", short: "Fev", campaigns: [
-    { cancer: "Vesícula Biliar", ribbon: "Verde", color: "#16a34a" },
-    { cancer: "Leucemia", ribbon: "Laranja", color: "#f97316" },
-  ]},
-  { month: "Março", short: "Mar", campaigns: [
-    { cancer: "Colo do Útero", ribbon: "Lilás", color: "#a855f7" },
-    { cancer: "Colorretal", ribbon: "Azul Marinho", color: "#1e3a8a" },
-  ]},
-  { month: "Abril", short: "Abr", campaigns: [
-    { cancer: "Testículo", ribbon: "Lilás", color: "#a855f7" },
-    { cancer: "Esôfago", ribbon: "Azul Claro", color: "#38bdf8" },
-  ]},
-  { month: "Maio", short: "Mai", campaigns: [
-    { cancer: "Boca (Oral)", ribbon: "Vermelho", color: "#dc2626" },
-    { cancer: "Cérebro", ribbon: "Cinza", color: "#6b7280" },
-  ]},
-  { month: "Junho", short: "Jun", campaigns: [
-    { cancer: "Rim", ribbon: "Verde", color: "#16a34a" },
-    { cancer: "Melanoma", ribbon: "Preto", color: "#0a0a0a" },
-  ]},
-  { month: "Julho", short: "Jul", campaigns: [
-    { cancer: "Cabeça e Pescoço", ribbon: "Verde", color: "#16a34a" },
-    { cancer: "Bexiga", ribbon: "Rosa Claro", color: "#f9a8d4" },
-    { cancer: "Ósseo", ribbon: "Amarelo", color: "#facc15" },
-  ]},
-  { month: "Agosto", short: "Ago", campaigns: [
-    { cancer: "Pulmão", ribbon: "Branco", color: "#f8fafc" },
-  ]},
-  { month: "Setembro", short: "Set", campaigns: [
-    { cancer: "Intestino", ribbon: "Verde", color: "#16a34a" },
-    { cancer: "Infantojuvenil", ribbon: "Dourado", color: "#ca8a04" },
-    { cancer: "Tireoide", ribbon: "Azul e Rosa", color: "linear-gradient(90deg,#60a5fa,#f472b6)" },
-  ]},
-  { month: "Outubro", short: "Out", campaigns: [
-    { cancer: "Mama", ribbon: "Rosa", color: "#ec4899" },
-    { cancer: "Fígado", ribbon: "Verde Escuro", color: "#14532d" },
-  ]},
-  { month: "Novembro", short: "Nov", campaigns: [
-    { cancer: "Próstata", ribbon: "Azul", color: "#2563eb" },
-    { cancer: "Pâncreas", ribbon: "Roxo", color: "#6b21a8" },
-  ]},
-  { month: "Dezembro", short: "Dez", campaigns: [
-    { cancer: "Pele (Não Melanoma)", ribbon: "Laranja", color: "#ea580c" },
-  ]},
+  {
+    month: "Janeiro",
+    short: "Jan",
+    campaigns: [{ cancer: "Colo do Útero", ribbon: "Verde", color: "#16a34a" }],
+  },
+  {
+    month: "Fevereiro",
+    short: "Fev",
+    campaigns: [
+      { cancer: "Vesícula Biliar", ribbon: "Verde", color: "#16a34a" },
+      { cancer: "Leucemia", ribbon: "Laranja", color: "#f97316" },
+    ],
+  },
+  {
+    month: "Março",
+    short: "Mar",
+    campaigns: [
+      { cancer: "Colo do Útero", ribbon: "Lilás", color: "#a855f7" },
+      { cancer: "Colorretal", ribbon: "Azul Marinho", color: "#1e3a8a" },
+    ],
+  },
+  {
+    month: "Abril",
+    short: "Abr",
+    campaigns: [
+      { cancer: "Testículo", ribbon: "Lilás", color: "#a855f7" },
+      { cancer: "Esôfago", ribbon: "Azul Claro", color: "#38bdf8" },
+    ],
+  },
+  {
+    month: "Maio",
+    short: "Mai",
+    campaigns: [
+      { cancer: "Boca (Oral)", ribbon: "Vermelho", color: "#dc2626" },
+      { cancer: "Cérebro", ribbon: "Cinza", color: "#6b7280" },
+    ],
+  },
+  {
+    month: "Junho",
+    short: "Jun",
+    campaigns: [
+      { cancer: "Rim", ribbon: "Verde", color: "#16a34a" },
+      { cancer: "Melanoma", ribbon: "Preto", color: "#0a0a0a" },
+    ],
+  },
+  {
+    month: "Julho",
+    short: "Jul",
+    campaigns: [
+      { cancer: "Cabeça e Pescoço", ribbon: "Verde", color: "#16a34a" },
+      { cancer: "Bexiga", ribbon: "Rosa Claro", color: "#f9a8d4" },
+      { cancer: "Ósseo", ribbon: "Amarelo", color: "#facc15" },
+    ],
+  },
+  {
+    month: "Agosto",
+    short: "Ago",
+    campaigns: [{ cancer: "Pulmão", ribbon: "Branco", color: "#f8fafc" }],
+  },
+  {
+    month: "Setembro",
+    short: "Set",
+    campaigns: [
+      { cancer: "Intestino", ribbon: "Verde", color: "#16a34a" },
+      { cancer: "Infantojuvenil", ribbon: "Dourado", color: "#ca8a04" },
+      { cancer: "Tireoide", ribbon: "Azul e Rosa", color: "linear-gradient(90deg,#60a5fa,#f472b6)" },
+    ],
+  },
+  {
+    month: "Outubro",
+    short: "Out",
+    campaigns: [
+      { cancer: "Mama", ribbon: "Rosa", color: "#ec4899" },
+      { cancer: "Fígado", ribbon: "Verde Escuro", color: "#14532d" },
+    ],
+  },
+  {
+    month: "Novembro",
+    short: "Nov",
+    campaigns: [
+      { cancer: "Próstata", ribbon: "Azul", color: "#2563eb" },
+      { cancer: "Pâncreas", ribbon: "Roxo", color: "#6b21a8" },
+    ],
+  },
+  {
+    month: "Dezembro",
+    short: "Dez",
+    campaigns: [{ cancer: "Pele (Não Melanoma)", ribbon: "Laranja", color: "#ea580c" }],
+  },
 ];
 
 const CalendarSection = () => {
@@ -68,21 +110,21 @@ const CalendarSection = () => {
   const active = months[selected];
 
   return (
-    <section id="calendario" className="py-20 bg-muted/50">
+    <section id="calendario" className="py-20 bg-muted/40 border-t border-border">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-sm font-bold text-secondary uppercase tracking-widest">
-            Conscientização
+          <span className="text-xs font-bold text-secondary uppercase tracking-widest bg-secondary/10 px-4 py-1.5 rounded-full border border-secondary/20">
+            Conscientização & Prevenção
           </span>
-          <h2 className="text-3xl md:text-5xl font-display font-black text-foreground mt-2">
+          <h2 className="text-3xl md:text-5xl font-display font-black text-foreground mt-3">
             Cores do Ano
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-            Cada mês do ano é representado por uma cor que simboliza a luta contra tipos específicos de câncer.
+          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-base">
+            Cada mês do ano é representado por uma cor que simboliza a luta e a conscientização contra tipos específicos de câncer.
           </p>
         </div>
 
-        {/* Month selector — horizontal timeline */}
+        {/* Month selector - horizontal timeline */}
         <div className="max-w-5xl mx-auto mb-10">
           <div className="flex gap-2 overflow-x-auto pb-3 snap-x scrollbar-thin justify-start md:justify-center">
             {months.map((m, i) => {
@@ -105,7 +147,7 @@ const CalendarSection = () => {
                     {m.campaigns.map((c, idx) => (
                       <span
                         key={idx}
-                        className="w-2 h-2 rounded-full ring-1 ring-black/10"
+                        className="w-2.5 h-2.5 rounded-full ring-1 ring-black/10"
                         style={{ background: c.color }}
                       />
                     ))}
@@ -144,7 +186,6 @@ const CalendarSection = () => {
                   key={idx}
                   className="flex items-center gap-4 p-4 rounded-2xl border border-border hover:shadow-md transition-shadow"
                 >
-                  {/* Ribbon shape */}
                   <div className="flex-shrink-0">
                     <div
                       className="w-14 h-14 rounded-full ring-4 ring-background shadow-md"

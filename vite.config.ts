@@ -11,6 +11,13 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    proxy: {
+      "/api/calendar-feed": {
+        target: "https://calendar.google.com",
+        changeOrigin: true,
+        rewrite: () => "/calendar/ical/aapoccba%40gmail.com/public/basic.ics",
+      },
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
