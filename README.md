@@ -44,7 +44,7 @@ AAPOC/
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## Como Rodar o Projeto
 
 ### 1. Rodando o Frontend
 
@@ -98,7 +98,7 @@ Com o backend rodando, você pode acessar a documentação interativa:
 
 ---
 
-## 📞 Contato da Associação
+## Contato da Associação
 
 - **Endereço:** Av. São Sebastião, 4160 — São Mateus, Cuiabá - MT
 - **WhatsApp:** (65) 99216-2284
