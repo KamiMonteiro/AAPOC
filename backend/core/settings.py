@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Local Apps
     "voluntarios",
+    "galeria",
 ]
 
 MIDDLEWARE = [
@@ -106,6 +107,10 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Media files (Upload de fotos, comprovantes e imagens)
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -155,6 +160,11 @@ UNFOLD = {
                         "title": "Voluntários Inscritos",
                         "icon": "volunteer_activism",
                         "link": "/admin/voluntarios/voluntario/",
+                    },
+                    {
+                        "title": "Galeria de Fotos",
+                        "icon": "photo_library",
+                        "link": "/admin/galeria/fotogaleria/",
                     },
                 ],
             },

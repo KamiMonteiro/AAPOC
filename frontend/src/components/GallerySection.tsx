@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { buscarFotosGaleria } from "@/lib/api";
 
 type GalleryPhoto = {
   src: string;
@@ -217,6 +219,23 @@ const galleryPhotos: GalleryPhoto[] = [
 ];
 
 const GallerySection = () => {
+  // Busca fotos cadastradas dinamicamente no backend Django
+  const { data: fotosApi = [] } = useQuery({
+    queryKey: ["aapoc-galeria-fotos"],
+    queryFn: buscarFotosGaleria,
+    staleTime: 1000 * 60 * 5, // 5 minutos
+  });
+
+  // Combina as fotos cadastradas no backend (com prioridade) + as fotos existentes
+  const allPhotos: GalleryPhoto[] = React.useMemo(() => {
+    const dynamic: GalleryPhoto[] = fotosApi.map((foto) => ({
+      src: foto.imagem,
+      alt: foto.titulo || "Foto de eventos da instituição",
+      href: foto.link_instagram || undefined,
+    }));
+    return [...dynamic, ...galleryPhotos];
+  }, [fotosApi]);
+
   // Controle do Carrossel
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -229,14 +248,14 @@ const GallerySection = () => {
   const prevModalImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setSelectedIndex((prev) =>
-      prev === null || prev === 0 ? galleryPhotos.length - 1 : prev - 1
+      prev === null || prev === 0 ? allPhotos.length - 1 : prev - 1
     );
   };
 
   const nextModalImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setSelectedIndex((prev) =>
-      prev === null || prev === galleryPhotos.length - 1 ? 0 : prev + 1
+      prev === null || prev === allPhotos.length - 1 ? 0 : prev + 1
     );
   };
 
@@ -281,7 +300,7 @@ const GallerySection = () => {
             ref={carouselRef}
             className="flex overflow-x-auto gap-6 scroll-smooth snap-x snap-mandatory py-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
-            {galleryPhotos.map((photo, index) => {
+            {allPhotos.map((photo, index) => {
               const isExternalLink = !!photo.href;
               const Container = isExternalLink ? "a" : "div";
 
@@ -321,7 +340,7 @@ const GallerySection = () => {
       </div>
 
       {/* Modal / Lightbox (Abre ao clicar na foto) */}
-      {selectedIndex !== null && (
+      {selectedIndex !== null && allPhotos[selectedIndex] && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 backdrop-blur-sm"
           onClick={closeModal}
@@ -342,8 +361,8 @@ const GallerySection = () => {
 
           <div className="relative max-h-[85vh] max-w-5xl flex items-center justify-center">
             <img
-              src={galleryPhotos[selectedIndex].src}
-              alt={galleryPhotos[selectedIndex].alt}
+              src={allPhotos[selectedIndex].src}
+              alt={allPhotos[selectedIndex].alt}
               className="max-h-[85vh] w-auto object-contain rounded-lg shadow-2xl select-none"
               onClick={(e) => e.stopPropagation()} 
             />

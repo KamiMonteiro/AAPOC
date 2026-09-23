@@ -83,3 +83,39 @@ export async function cadastrarVoluntario(
     );
   }
 }
+
+export type FotoGaleria = {
+  id: string;
+  titulo: string;
+  imagem: string;
+  descricao?: string;
+  data_evento: string;
+  link_instagram?: string;
+  ordem: number;
+  criado_em: string;
+};
+
+/**
+ * Busca as fotos cadastradas no backend Django para a galeria
+ */
+export async function buscarFotosGaleria(): Promise<FotoGaleria[]> {
+  const url = `${API_BASE_URL}/galeria/`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const data = await response.json();
+    return Array.isArray(data) ? data : data.results || [];
+  } catch {
+    return [];
+  }
+}
+

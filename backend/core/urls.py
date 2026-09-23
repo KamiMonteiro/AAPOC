@@ -3,6 +3,8 @@ URL configuration for core project.
 AAPOC - Associação de Apoio aos Pacientes Oncológicos de Cuiabá
 """
 
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
@@ -13,10 +15,12 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 from voluntarios.views import VoluntarioViewSet
+from galeria.views import FotoGaleriaViewSet
 
 # Router para os endpoints da API REST
 router = DefaultRouter()
 router.register(r"voluntarios", VoluntarioViewSet, basename="voluntario")
+router.register(r"galeria", FotoGaleriaViewSet, basename="galeria")
 
 urlpatterns = [
     # Redireciona a raiz para a documentação interativa
@@ -33,3 +37,7 @@ urlpatterns = [
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
 ]
+
+# Servir arquivos de mídia (uploads) localmente em desenvolvimento
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
