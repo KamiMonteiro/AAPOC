@@ -23,6 +23,11 @@ ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.s
 
 # Application definition
 INSTALLED_APPS = [
+    # Tema Moderno Unfold (Tailwind CSS) - deve vir antes de django.contrib.admin
+    "unfold",
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
+
     # Django Core Apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -30,10 +35,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     # Third-Party Apps
     "rest_framework",
     "corsheaders",
     "drf_spectacular",
+
     # Local Apps
     "voluntarios",
 ]
@@ -125,3 +132,44 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+
+# Configurações do Tema Unfold (Dashboard Moderno AAPOC)
+UNFOLD = {
+    "SITE_TITLE": "AAPOC MT",
+    "SITE_HEADER": "AAPOC — Painel de Gestão",
+    "SITE_SUBHEADER": "Associação de Apoio aos Pacientes Oncológicos de Cuiabá",
+    "SITE_URL": "http://localhost:5173",
+    "SITE_SYMBOL": "volunteer_activism",
+    "SHOW_HISTORY": True,
+    "SHOW_VIEW_ON_SITE": True,
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+        "navigation": [
+            {
+                "title": "Ações e Pessoas",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Voluntários Inscritos",
+                        "icon": "volunteer_activism",
+                        "link": "/admin/voluntarios/voluntario/",
+                    },
+                ],
+            },
+            {
+                "title": "Acesso e Segurança",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Usuários do Sistema",
+                        "icon": "group",
+                        "link": "/admin/auth/user/",
+                    },
+                ],
+            },
+        ],
+    },
+}
+

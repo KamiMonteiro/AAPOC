@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from unfold.admin import ModelAdmin
+from unfold.decorators import display
 from .models import Voluntario
 
 
 @admin.register(Voluntario)
-class VoluntarioAdmin(admin.ModelAdmin):
+class VoluntarioAdmin(ModelAdmin):
     list_display = [
         "nome_completo",
         "status_colorido",
@@ -54,29 +56,27 @@ class VoluntarioAdmin(admin.ModelAdmin):
         ),
     ]
 
-    @admin.display(description="Status")
+    @display(
+        description="Status",
+        label={
+            Voluntario.Status.PENDENTE: "info",
+            Voluntario.Status.EM_CONTATO: "warning",
+            Voluntario.Status.APROVADO: "success",
+            Voluntario.Status.RECUSADO: "danger",
+        },
+    )
     def status_colorido(self, obj):
-        cores = {
-            Voluntario.Status.PENDENTE: ("#2563eb", "#dbeafe"),      # Azul
-            Voluntario.Status.EM_CONTATO: ("#d97706", "#fef3c7"),    # Âmbar
-            Voluntario.Status.APROVADO: ("#16a34a", "#dcfce7"),      # Verde
-            Voluntario.Status.RECUSADO: ("#dc2626", "#fee2e2"),      # Vermelho
-        }
-        cor_texto, cor_fundo = cores.get(obj.status, ("#4b5563", "#f3f4f6"))
-        return format_html(
-            '<span style="background-color: {}; color: {}; padding: 4px 10px; border-radius: 9999px; font-weight: bold; font-size: 11px;">{}</span>',
-            cor_fundo,
-            cor_texto,
-            obj.get_status_display(),
-        )
+        return obj.status
 
-    @admin.display(description="Idade")
+    @display(description="Idade")
     def idade_calculada(self, obj):
         return f"{obj.idade} anos"
 
-    @admin.display(description="Chamar no WhatsApp")
+    @display(description="Contato")
     def botao_whatsapp(self, obj):
         return format_html(
-            '<a href="{}" target="_blank" style="background-color: #25D366; color: white; padding: 4px 10px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; display: inline-flex; align-items: center; gap: 4px;">💬 WhatsApp</a>',
+            '<a href="{}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-md shadow-sm transition-colors">'
+            '<span>💬</span> Chamar no WhatsApp'
+            '</a>',
             obj.link_whatsapp,
         )
