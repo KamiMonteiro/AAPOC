@@ -67,9 +67,21 @@ const ContactSection = () => {
           <p className="text-sm text-primary-foreground/50">
             © {new Date().getFullYear()} AAPOC MT — Associação de Apoio aos Pacientes Oncológicos de Cuiabá.
           </p>
-          <p className="text-xs text-primary-foreground/30 mt-1">
-            Todos os direitos reservados.
-          </p>
+          <div className="flex justify-center items-center gap-3 mt-2">
+            <p className="text-xs text-primary-foreground/30">
+              Todos os direitos reservados.
+            </p>
+            <span className="text-primary-foreground/20 text-xs">•</span>
+            <a
+              href="http://127.0.0.1:8000/admin/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-primary-foreground/40 hover:text-accent transition-colors inline-flex items-center gap-1"
+              title="Acesso exclusivo para a coordenação da AAPOC"
+            >
+              <span>🔒</span> Área da Coordenação
+            </a>
+          </div>
         </div>
       </div>
     </section>
