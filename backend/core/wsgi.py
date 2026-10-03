@@ -34,6 +34,18 @@ try:
             u.is_superuser = True
             u.save()
             print(f"[WSGI Startup] Superusuário '{username}' atualizado com sucesso.")
+
+    from django.core.management import call_command
+    from projetos.models import Projeto
+    from galeria.models import FotoGaleria
+
+    if Projeto.objects.count() == 0:
+        call_command("popular_projetos")
+        print("[WSGI Startup] Projetos iniciais povoados com sucesso.")
+
+    if FotoGaleria.objects.count() == 0:
+        call_command("popular_galeria")
+        print("[WSGI Startup] Fotos da galeria povoadas com sucesso.")
 except Exception as e:
     print(f"[WSGI Startup] Aviso: {e}")
 

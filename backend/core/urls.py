@@ -29,6 +29,7 @@ def setup_admin(request):
     if request.GET.get("key") != "aapoc2026":
         return JsonResponse({"error": "Unauthorized"}, status=403)
     from django.contrib.auth import get_user_model
+    from django.core.management import call_command
     User = get_user_model()
     resultados = []
     for username, email in [("admin", "admin@aapoc.org.br"), ("janaina", "contato@aapoc.org.br")]:
@@ -42,7 +43,20 @@ def setup_admin(request):
             u.is_superuser = True
             u.save()
             resultados.append(f"{username} (atualizado)")
-    return JsonResponse({"status": "ok", "users": resultados})
+
+    try:
+        call_command("popular_projetos")
+        resultados.append("popular_projetos executado com sucesso")
+    except Exception as e:
+        resultados.append(f"erro projetos: {e}")
+
+    try:
+        call_command("popular_galeria")
+        resultados.append("popular_galeria executado com sucesso")
+    except Exception as e:
+        resultados.append(f"erro galeria: {e}")
+
+    return JsonResponse({"status": "ok", "actions": resultados})
 
 urlpatterns = [
     # Redireciona a raiz diretamente para a tela de login do Painel Administrativo
