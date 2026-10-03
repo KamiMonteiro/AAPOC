@@ -14,9 +14,8 @@ Projeto institucional da **AAPOC MT — Associação de Apoio aos Pacientes Onco
 | **Documentação ReDoc** | [https://painel.aapoccba.com.br/api/redoc/](https://painel.aapoccba.com.br/api/redoc/) | Especificação técnica dos contratos e esquemas da API. |
 | **Servidor em Nuvem (Render)** | [https://aapoc-backend.onrender.com](https://aapoc-backend.onrender.com) | Host de infraestrutura com SSL e balanceamento automático. |
 
-> **🔑 Credenciais para Avaliação do Professor:**
-> - **Usuário:** `admin` *(ou `janaina`)*
-> - **Senha:** `admin`
+> **🔒 Acesso Administrativo:**
+> As credenciais de acesso para avaliação acadêmica são enviadas diretamente na submissão privada do projeto no ambiente acadêmico (AVA) por boas práticas de segurança.
 
 ---
 

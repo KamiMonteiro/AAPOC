@@ -24,9 +24,7 @@ O backend do sistema e a camada de CMS administrativo encontram-se publicados e 
 | **Documentação ReDoc** | [https://painel.aapoccba.com.br/api/redoc/](https://painel.aapoccba.com.br/api/redoc/) | Especificação formal dos contratos de dados da API. |
 | **Servidor em Nuvem (Render Host)** | [https://aapoc-backend.onrender.com](https://aapoc-backend.onrender.com) | Host de infraestrutura com balanceamento Cloudflare e SSL automático. |
 
-#### Credenciais para Avaliação do Professor:
-* **Usuário:** `admin` *(ou `janaina`)*
-* **Senha:** `admin`
+> **Nota de Acesso:** As credenciais de teste para avaliação do professor são enviadas de forma privada na submissão da atividade acadêmica no AVA/portal por questões de boas práticas e segurança da informação.
 
 ---
 
