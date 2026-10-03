@@ -16,11 +16,13 @@ from drf_spectacular.views import (
 )
 from voluntarios.views import VoluntarioViewSet
 from galeria.views import FotoGaleriaViewSet
+from projetos.views import ProjetoViewSet
 
 # Router para os endpoints da API REST
 router = DefaultRouter()
 router.register(r"voluntarios", VoluntarioViewSet, basename="voluntario")
 router.register(r"galeria", FotoGaleriaViewSet, basename="galeria")
+router.register(r"projetos", ProjetoViewSet, basename="projeto")
 
 def setup_admin(request):
     from django.http import JsonResponse

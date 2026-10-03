@@ -17,8 +17,10 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-dev-key-change-in-production")
 DEBUG = os.getenv("DEBUG", "True").lower() in ("true", "1", "yes")
 
-allowed_hosts_env = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1")
+allowed_hosts_env = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,testserver")
 ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
+if "testserver" not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append("testserver")
 if ".onrender.com" not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(".onrender.com")
 
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     # Local Apps
     "voluntarios",
     "galeria",
+    "projetos",
 ]
 
 MIDDLEWARE = [
@@ -179,6 +182,11 @@ UNFOLD = {
                         "title": "Voluntários Inscritos",
                         "icon": "volunteer_activism",
                         "link": "/admin/voluntarios/voluntario/",
+                    },
+                    {
+                        "title": "Projetos e Ações",
+                        "icon": "folder_special",
+                        "link": "/admin/projetos/projeto/",
                     },
                     {
                         "title": "Galeria de Fotos",

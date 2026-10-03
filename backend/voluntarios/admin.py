@@ -11,12 +11,13 @@ class VoluntarioAdmin(ModelAdmin):
         "nome_completo",
         "status_colorido",
         "idade_calculada",
+        "como_ajudar_preview",
         "telefone",
         "botao_whatsapp",
         "criado_em",
     ]
     list_filter = ["status", "termo_lgpd_aceito", "criado_em"]
-    search_fields = ["nome_completo", "telefone", "instagram", "endereco"]
+    search_fields = ["nome_completo", "telefone", "como_deseja_ajudar", "instagram", "endereco"]
     date_hierarchy = "criado_em"
     readonly_fields = ["id", "idade_calculada", "botao_whatsapp", "criado_em", "atualizado_em"]
 
@@ -71,6 +72,17 @@ class VoluntarioAdmin(ModelAdmin):
     @display(description="Idade")
     def idade_calculada(self, obj):
         return f"{obj.idade} anos"
+
+    @display(description="Como Deseja Ajudar")
+    def como_ajudar_preview(self, obj):
+        texto = (obj.como_deseja_ajudar or "").strip()
+        if len(texto) > 65:
+            return format_html(
+                '<span title="{}" style="cursor: help; color: #4b5563;">{}...</span>',
+                texto,
+                texto[:65],
+            )
+        return texto or "—"
 
     @display(description="Contato")
     def botao_whatsapp(self, obj):

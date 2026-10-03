@@ -119,3 +119,62 @@ export async function buscarFotosGaleria(): Promise<FotoGaleria[]> {
   }
 }
 
+export type ModalSection = {
+  heading: string;
+  content: string | string[];
+};
+
+export type ProjectModal = {
+  tagline: string;
+  description: string;
+  sections: ModalSection[];
+};
+
+export type ProjectCategory =
+  | "todos"
+  | "acolhimento"
+  | "saude"
+  | "autoestima"
+  | "empoderamento";
+
+export type ApiProject = {
+  id: string;
+  slug: string;
+  title: string;
+  category: ProjectCategory[];
+  categoryLabel: string;
+  impactHighlight: string;
+  ctaText: string;
+  monthYear: string;
+  image: string;
+  alt: string;
+  description: string;
+  modal: ProjectModal;
+  ordem: number;
+};
+
+/**
+ * Busca as iniciativas e projetos cadastrados no backend Django (CMS AAPOC)
+ */
+export async function buscarProjetos(): Promise<ApiProject[]> {
+  const url = `${API_BASE_URL}/projetos/`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const data = await response.json();
+    return Array.isArray(data) ? data : data.results || [];
+  } catch {
+    return [];
+  }
+}
+
+

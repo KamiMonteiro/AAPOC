@@ -7,6 +7,8 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { buscarProjetos } from "@/lib/api";
 import colon from "@/assets/colon_projeto_2026.png";
 import {
   Sparkles,
@@ -617,7 +619,18 @@ interface ProjectsGridProps {
   projects?: Project[];
 }
 
-const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
+const ProjectsGrid = ({ projects: propProjects }: ProjectsGridProps) => {
+  // Busca projetos cadastrados dinamicamente no backend Django (CMS AAPOC)
+  const { data: apiProjects = [] } = useQuery({
+    queryKey: ["aapoc-projetos"],
+    queryFn: buscarProjetos,
+    staleTime: 1000 * 60 * 5, // 5 minutos
+  });
+
+  const projects =
+    propProjects ||
+    (apiProjects.length > 0 ? (apiProjects as unknown as Project[]) : defaultProjects);
+
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("todos");
   const [openProject, setOpenProject] = useState<Project | null>(null);
 

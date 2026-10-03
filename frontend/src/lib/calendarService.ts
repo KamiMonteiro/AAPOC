@@ -64,7 +64,7 @@ function parseIcalDate(dateStr: string): { date: Date; isAllDay: boolean } {
   return { date: isNaN(parsed.getTime()) ? new Date() : parsed, isAllDay: false };
 }
 
-export function parseIcsContent(icsContent: string): CalendarEvent[] {
+export function parseIcsContent(icsContent: string, filterPast = true): CalendarEvent[] {
   const unfolded = unfoldIcal(icsContent);
   const lines = unfolded.split(/\r\n|\n|\r/);
 
@@ -136,6 +136,10 @@ export function parseIcsContent(icsContent: string): CalendarEvent[] {
       default:
         break;
     }
+  }
+
+  if (!filterPast) {
+    return events.sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
   }
 
   const now = new Date();

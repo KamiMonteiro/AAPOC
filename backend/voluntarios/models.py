@@ -16,8 +16,8 @@ class Voluntario(models.Model):
     nome_completo = models.CharField(max_length=150, verbose_name="Nome Completo")
     data_nascimento = models.DateField(verbose_name="Data de Nascimento")
     telefone = models.CharField(max_length=20, verbose_name="Telefone / WhatsApp")
-    instagram = models.CharField(max_length=60, blank=True, verbose_name="Instagram")
-    endereco = models.CharField(max_length=255, verbose_name="Endereço")
+    instagram = models.CharField(max_length=60, blank=True, default="", verbose_name="Instagram")
+    endereco = models.CharField(max_length=255, blank=True, default="", verbose_name="Endereço")
     como_deseja_ajudar = models.TextField(verbose_name="Como Deseja Ajudar")
     status = models.CharField(
         max_length=20,

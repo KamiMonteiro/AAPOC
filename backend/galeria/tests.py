@@ -42,8 +42,8 @@ class FotoGaleriaAPITestCase(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        # DRF retorna paginado por padrão { count: 1, results: [...] }
-        results = response.data.get("results", response.data)
+        # Suporta tanto retorno de lista direta quanto dicionário paginado
+        results = response.data if isinstance(response.data, list) else response.data.get("results", [])
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0]["titulo"], "Foto Evento Outubro Rosa")
 

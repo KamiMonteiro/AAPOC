@@ -19,6 +19,7 @@ class FotoGaleriaViewSet(viewsets.ModelViewSet):
     """
     queryset = FotoGaleria.objects.all()
     serializer_class = FotoGaleriaSerializer
+    pagination_class = None
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ["titulo", "descricao"]
     ordering_fields = ["ordem", "data_evento", "criado_em"]

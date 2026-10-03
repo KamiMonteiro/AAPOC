@@ -27,7 +27,7 @@ TRANSP:OPAQUE
 END:VEVENT
 END:VCALENDAR`;
 
-    const events = parseIcsContent(realFeed);
+    const events = parseIcsContent(realFeed, false);
     expect(events.length).toBe(1);
     expect(events[0].title).toBe("Dia A");
     expect(events[0].location).toContain("Av. São Sebastião, 4160");

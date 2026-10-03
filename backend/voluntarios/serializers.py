@@ -24,6 +24,9 @@ class VoluntarioPublicCreateSerializer(serializers.ModelSerializer):
     Expõe apenas os campos que o voluntário deve preencher e valida termos de LGPD.
     """
 
+    instagram = serializers.CharField(required=False, allow_blank=True, default="")
+    endereco = serializers.CharField(required=False, allow_blank=True, default="")
+
     class Meta:
         model = Voluntario
         fields = [
@@ -59,7 +62,9 @@ class VoluntarioPublicCreateSerializer(serializers.ModelSerializer):
 
     def validate_instagram(self, value: str) -> str:
         clean = value.strip()
-        if clean and not clean.startswith("@"):
+        if not clean:
+            return ""
+        if not clean.startswith("@"):
             clean = f"@{clean}"
         return clean
 

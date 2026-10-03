@@ -8,232 +8,32 @@ type GalleryPhoto = {
   href?: string; // Mantido caso queira colocar link do Instagram em alguma foto
 };
 
-const galleryPhotos: GalleryPhoto[] = [
-  {
-    src: "/img/momentos_.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_2.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
- 
-  {
-    src: "/img/momentos_44.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_4.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_5.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-   {
-    src: "/img/momentos_46.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_1.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos.jpeg",
-    alt:"Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_3.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_6.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_7.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_8.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_9.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_10.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_11.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_12.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_13.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_14.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_15.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_16.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_17.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_18.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_19.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_20.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_21.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_22.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_23.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_24.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_25.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_26.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-
-  {
-    src: "/img/momentos_27.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_28.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_29.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_30.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_31.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_32.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_33.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_34.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_35.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_36.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_37.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_38.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_39.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_40.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_41.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_42.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_43.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-  {
-    src: "/img/momentos_45.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-   {
-    src: "/img/momentos_47.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-   {
-    src: "/img/momentos_48.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-   {
-    src: "/img/momentos_49.jpeg",
-    alt: "Foto de eventos da instituição",
-  },
-
+// Fotos de fallback caso a API esteja temporariamente offline durante o desenvolvimento local
+const fallbackPhotos: GalleryPhoto[] = [
+  { src: "/img/momentos_1.jpeg", alt: "Ação de acolhimento AAPOC" },
+  { src: "/img/momentos_2.jpeg", alt: "Ação de acolhimento AAPOC" },
+  { src: "/img/momentos_3.jpeg", alt: "Ação de acolhimento AAPOC" },
+  { src: "/img/momentos_4.jpeg", alt: "Ação de acolhimento AAPOC" },
 ];
 
 const GallerySection = () => {
-  // Busca fotos cadastradas dinamicamente no backend Django
-  const { data: fotosApi = [] } = useQuery({
+  // Busca fotos cadastradas dinamicamente no backend Django (CMS da AAPOC)
+  const { data: fotosApi = [], isLoading } = useQuery({
     queryKey: ["aapoc-galeria-fotos"],
     queryFn: buscarFotosGaleria,
     staleTime: 1000 * 60 * 5, // 5 minutos
   });
 
-  // Combina as fotos cadastradas no backend (com prioridade) + as fotos existentes
+  // Utiliza as fotos da API dinâmica; se a API ainda estiver carregando ou vazia, usa fallback mínimo
   const allPhotos: GalleryPhoto[] = React.useMemo(() => {
-    const dynamic: GalleryPhoto[] = fotosApi.map((foto) => ({
-      src: foto.imagem,
-      alt: foto.titulo || "Foto de eventos da instituição",
-      href: foto.link_instagram || undefined,
-    }));
-    return [...dynamic, ...galleryPhotos];
+    if (fotosApi.length > 0) {
+      return fotosApi.map((foto) => ({
+        src: foto.imagem,
+        alt: foto.titulo || "Foto de eventos da instituição",
+        href: foto.link_instagram || undefined,
+      }));
+    }
+    return fallbackPhotos;
   }, [fotosApi]);
 
   // Controle do Carrossel

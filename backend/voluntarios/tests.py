@@ -78,3 +78,20 @@ class VoluntarioAPITestCase(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data.get("results", [])), 1)
+
+    def test_criar_voluntario_sem_endereco_e_sem_instagram(self):
+        dados_simplificados = {
+            "nome_completo": "Carlos Andrade",
+            "data_nascimento": "1998-10-20",
+            "telefone": "(65) 98888-5555",
+            "como_deseja_ajudar": "Ajuda com transporte de pacientes.",
+            "termo_lgpd_aceito": True,
+        }
+        url = "/api/voluntarios/"
+        response = self.client.post(url, dados_simplificados, format="json")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(response.data.get("success"))
+        voluntario = Voluntario.objects.filter(nome_completo="Carlos Andrade").first()
+        self.assertIsNotNone(voluntario)
+        self.assertEqual(voluntario.endereco, "")
+        self.assertEqual(voluntario.instagram, "")

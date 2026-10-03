@@ -7,6 +7,7 @@ from .serializers import (
     VoluntarioAdminSerializer,
 )
 from .permissions import IsAdminOrAnonymousCreate
+from .notifications import notificar_coordenacao_novo_voluntario
 
 
 @extend_schema_view(
@@ -62,6 +63,12 @@ class VoluntarioViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         voluntario = serializer.save()
+
+        # Dispara notificação para a coordenação (WhatsApp webhook / E-mail se configurados)
+        try:
+            notificar_coordenacao_novo_voluntario(voluntario)
+        except Exception:
+            pass
 
         # Resposta amigável para o frontend
         return Response(

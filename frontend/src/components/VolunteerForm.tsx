@@ -16,14 +16,12 @@ import { toast } from "sonner";
 import { CheckCircle2, HeartHandshake, Loader2, MessageCircle } from "lucide-react";
 import { cadastrarVoluntario, ApiError } from "@/lib/api";
 
-const WHATSAPP_NUMBER = "+555565999162284";
+const WHATSAPP_NUMBER = "+5565992162284";
 
 type FormFields = {
   name: string;
   birthDate: string;
   contact: string;
-  instagram: string;
-  address: string;
   howToHelp: string;
   termoLgpd: boolean;
 };
@@ -36,12 +34,6 @@ const formatPhone = (value: string) => {
   if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
   if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-};
-
-const formatInstagram = (value: string) => {
-  const clean = value.replace(/\s/g, "");
-  if (!clean) return "";
-  return clean.startsWith("@") ? clean : `@${clean}`;
 };
 
 const validateForm = (form: FormFields): FormErrors => {
@@ -65,10 +57,6 @@ const validateForm = (form: FormFields): FormErrors => {
     errors.contact = "Informe um telefone válido com DDD (10 ou 11 dígitos).";
   }
 
-  if (!form.address.trim()) {
-    errors.address = "Informe o endereço ou bairro em Cuiabá/Várzea Grande.";
-  }
-
   if (!form.howToHelp.trim()) {
     errors.howToHelp = "Conte-nos como você deseja contribuir.";
   }
@@ -89,8 +77,6 @@ const VolunteerForm = () => {
     name: "",
     birthDate: "",
     contact: "",
-    instagram: "",
-    address: "",
     howToHelp: "",
     termoLgpd: true,
   });
@@ -102,8 +88,6 @@ const VolunteerForm = () => {
       name: "",
       birthDate: "",
       contact: "",
-      instagram: "",
-      address: "",
       howToHelp: "",
       termoLgpd: true,
     });
@@ -123,7 +107,6 @@ const VolunteerForm = () => {
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       let value: any = event.target.value;
       if (field === "contact") value = formatPhone(value);
-      if (field === "instagram") value = formatInstagram(value);
 
       setForm((prev) => ({ ...prev, [field]: value }));
       if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -146,8 +129,6 @@ const VolunteerForm = () => {
         nome_completo: form.name.trim(),
         data_nascimento: form.birthDate,
         telefone: form.contact.trim(),
-        instagram: form.instagram.trim() || undefined,
-        endereco: form.address.trim(),
         como_deseja_ajudar: form.howToHelp.trim(),
         termo_lgpd_aceito: form.termoLgpd,
       });
@@ -161,7 +142,6 @@ const VolunteerForm = () => {
         if (error.errors.nome_completo) backendErrors.name = Array.isArray(error.errors.nome_completo) ? error.errors.nome_completo[0] : String(error.errors.nome_completo);
         if (error.errors.data_nascimento) backendErrors.birthDate = Array.isArray(error.errors.data_nascimento) ? error.errors.data_nascimento[0] : String(error.errors.data_nascimento);
         if (error.errors.telefone) backendErrors.contact = Array.isArray(error.errors.telefone) ? error.errors.telefone[0] : String(error.errors.telefone);
-        if (error.errors.endereco) backendErrors.address = Array.isArray(error.errors.endereco) ? error.errors.endereco[0] : String(error.errors.endereco);
         if (error.errors.como_deseja_ajudar) backendErrors.howToHelp = Array.isArray(error.errors.como_deseja_ajudar) ? error.errors.como_deseja_ajudar[0] : String(error.errors.como_deseja_ajudar);
         if (error.errors.termo_lgpd_aceito) backendErrors.termoLgpd = Array.isArray(error.errors.termo_lgpd_aceito) ? error.errors.termo_lgpd_aceito[0] : String(error.errors.termo_lgpd_aceito);
         setErrors(backendErrors);
@@ -241,30 +221,7 @@ const VolunteerForm = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="instagram">Instagram (opcional)</Label>
-                  <Input
-                    id="instagram"
-                    value={form.instagram}
-                    onChange={handleChange("instagram")}
-                    placeholder="@seu_perfil"
-                    disabled={isSubmitting}
-                  />
-                </div>
 
-                <div className="grid gap-2">
-                  <Label htmlFor="address">Endereço / Bairro *</Label>
-                  <Input
-                    id="address"
-                    value={form.address}
-                    onChange={handleChange("address")}
-                    placeholder="Bairro, Cidade - MT"
-                    disabled={isSubmitting}
-                  />
-                  {errors.address && <p className="text-xs text-destructive">{errors.address}</p>}
-                </div>
-              </div>
 
               <div className="grid gap-2">
                 <Label htmlFor="howToHelp">Como você deseja ajudar? *</Label>
