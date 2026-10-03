@@ -73,7 +73,12 @@ const ContactSection = () => {
             </p>
             <span className="text-primary-foreground/20 text-xs">•</span>
             <a
-              href="http://127.0.0.1:8000/admin/"
+              href={
+                typeof window !== "undefined" &&
+                (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+                  ? "http://127.0.0.1:8000/admin/"
+                  : "https://painel.aapoccba.com.br/admin/"
+              }
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-primary-foreground/40 hover:text-accent transition-colors inline-flex items-center gap-1"

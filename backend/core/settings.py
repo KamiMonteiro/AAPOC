@@ -19,13 +19,16 @@ DEBUG = os.getenv("DEBUG", "True").lower() in ("true", "1", "yes")
 
 allowed_hosts_env = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,testserver")
 ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
-if "testserver" not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append("testserver")
-if ".onrender.com" not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append(".onrender.com")
+for h in ["testserver", ".onrender.com", ".aapoccba.com.br", "painel.aapoccba.com.br", "aapoccba.com.br"]:
+    if h not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(h)
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.onrender.com",
+    "https://*.aapoccba.com.br",
+    "https://painel.aapoccba.com.br",
+    "https://aapoccba.com.br",
+    "https://www.aapoccba.com.br",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
@@ -140,6 +143,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # CORS Configuration (Permite que o frontend React acesse a API)
 cors_env = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173")
 CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_env.split(",") if origin.strip()]
+for origin in [
+    "https://aapoccba.com.br",
+    "https://www.aapoccba.com.br",
+    "https://painel.aapoccba.com.br",
+]:
+    if origin not in CORS_ALLOWED_ORIGINS:
+        CORS_ALLOWED_ORIGINS.append(origin)
 CORS_ALLOW_CREDENTIALS = True
 
 

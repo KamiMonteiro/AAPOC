@@ -45,8 +45,8 @@ def setup_admin(request):
     return JsonResponse({"status": "ok", "users": resultados})
 
 urlpatterns = [
-    # Redireciona a raiz para a documentação interativa
-    path("", RedirectView.as_view(url="/api/docs/", permanent=False), name="index-redirect"),
+    # Redireciona a raiz diretamente para a tela de login do Painel Administrativo
+    path("", RedirectView.as_view(url="/admin/", permanent=False), name="index-redirect"),
 
     # Painel Administrativo Nativo do Django
     path("admin/", admin.site.urls),
