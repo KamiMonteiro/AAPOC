@@ -52,6 +52,34 @@ class VoluntarioAPITestCase(TestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("termo_lgpd_aceito", response.data)
 
+    def test_bloquear_quando_omitido_termo_lgpd(self):
+        dados_omitidos = self.dados_validos.copy()
+        dados_omitidos.pop("termo_lgpd_aceito")
+
+        url = "/api/voluntarios/"
+        response = self.client.post(url, dados_omitidos, format="json")
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn("termo_lgpd_aceito", response.data)
+
+    def test_bloquear_menor_16_aniversario_amanha(self):
+        hoje = date.today()
+        amanha = hoje + timedelta(days=1)
+        try:
+            nasc_quase_16 = amanha.replace(year=amanha.year - 16)
+        except ValueError:
+            nasc_quase_16 = amanha.replace(year=amanha.year - 16, day=28)
+
+        dados_quase_16 = self.dados_validos.copy()
+        dados_quase_16["data_nascimento"] = nasc_quase_16.strftime("%Y-%m-%d")
+
+        response = self.client.post("/api/voluntarios/", dados_quase_16, format="json")
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn("data_nascimento", response.data)
+
+    def test_setup_admin_endpoint_removido(self):
+        response = self.client.get("/api/setup-admin/?key=aapoc2026")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
     def test_usuario_anonimo_nao_pode_listar_voluntarios(self):
         Voluntario.objects.create(
             nome_completo="João Teste",
@@ -59,6 +87,7 @@ class VoluntarioAPITestCase(TestCase):
             telefone="65988887777",
             endereco="Cuiabá",
             como_deseja_ajudar="Logística",
+            termo_lgpd_aceito=True,
         )
         url = "/api/voluntarios/"
         response = self.client.get(url)
@@ -72,6 +101,7 @@ class VoluntarioAPITestCase(TestCase):
             telefone="65988887777",
             endereco="Cuiabá",
             como_deseja_ajudar="Logística",
+            termo_lgpd_aceito=True,
         )
         self.client.force_authenticate(user=self.admin_user)
         url = "/api/voluntarios/"

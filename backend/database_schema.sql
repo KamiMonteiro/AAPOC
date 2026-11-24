@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "voluntarios_voluntario" (
     "como_deseja_ajudar" TEXT NOT NULL,
     "status" VARCHAR(20) NOT NULL DEFAULT 'PENDENTE',
     "observacoes_internas" TEXT DEFAULT '',
-    "termo_lgpd_aceito" BOOLEAN NOT NULL DEFAULT TRUE,
+    "termo_lgpd_aceito" BOOLEAN NOT NULL DEFAULT FALSE,
     "criado_em" TIMESTAMP WITH TIME ZONE NOT NULL,
     "atualizado_em" TIMESTAMP WITH TIME ZONE NOT NULL
 );

@@ -22,7 +22,7 @@ const ContactSection = () => {
 
           <div className="text-center">
             <a
-              href="https://api.whatsapp.com/send/?phone=5565999162284&text&type=phone_number&app_absent=0&utm_source=ig"
+              href="https://api.whatsapp.com/send/?phone=5565992162284&text&type=phone_number&app_absent=0&utm_source=ig"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
@@ -48,7 +48,7 @@ const ContactSection = () => {
                 <Instagram className="w-6 h-6 text-hope-foreground" />
               </div>
               <h3 className="font-bold text-lg">Instagram</h3>
-              <p className="text-sm text-primary-foreground/70 mt-2">@aapocmt</p>
+              <p className="text-sm text-primary-foreground/70 mt-2">@aapoc.oficial</p>
             </a>
           </div>
         </div>

@@ -31,7 +31,7 @@ class Voluntario(models.Model):
         help_text="Anotações da equipe sobre entrevistas, disponibilidade ou histórico.",
     )
     termo_lgpd_aceito = models.BooleanField(
-        default=True,
+        default=False,
         verbose_name="Aceite do Termo de Privacidade (LGPD)",
         help_text="Indica que o voluntário autorizou o armazenamento de seus dados para contato da AAPOC.",
     )
