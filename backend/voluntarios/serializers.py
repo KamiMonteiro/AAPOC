@@ -26,6 +26,7 @@ class VoluntarioPublicCreateSerializer(serializers.ModelSerializer):
 
     instagram = serializers.CharField(required=False, allow_blank=True, default="")
     endereco = serializers.CharField(required=False, allow_blank=True, default="")
+    termo_lgpd_aceito = serializers.BooleanField(required=True)
 
     class Meta:
         model = Voluntario

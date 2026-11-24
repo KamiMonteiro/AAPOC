@@ -46,10 +46,18 @@ const validateForm = (form: FormFields): FormErrors => {
   if (!form.birthDate) {
     errors.birthDate = "Informe a data de nascimento.";
   } else {
-    const birth = new Date(form.birthDate);
+    const [year, month, day] = form.birthDate.split("-").map(Number);
     const today = new Date();
-    const age = today.getFullYear() - birth.getFullYear();
-    if (age < 16 || age > 100) errors.birthDate = "O candidato deve ter entre 16 e 100 anos.";
+    let age = today.getFullYear() - year;
+    const hasHadBirthdayThisYear =
+      today.getMonth() + 1 > month ||
+      (today.getMonth() + 1 === month && today.getDate() >= day);
+    if (!hasHadBirthdayThisYear) {
+      age -= 1;
+    }
+    if (isNaN(age) || age < 16 || age > 100) {
+      errors.birthDate = "O candidato deve ter entre 16 e 100 anos.";
+    }
   }
 
   const digits = form.contact.replace(/\D/g, "");
@@ -78,7 +86,7 @@ const VolunteerForm = () => {
     birthDate: "",
     contact: "",
     howToHelp: "",
-    termoLgpd: true,
+    termoLgpd: false,
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -89,7 +97,7 @@ const VolunteerForm = () => {
       birthDate: "",
       contact: "",
       howToHelp: "",
-      termoLgpd: true,
+      termoLgpd: false,
     });
     setErrors({});
     setIsSuccess(false);

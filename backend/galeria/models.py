@@ -23,7 +23,7 @@ class FotoGaleria(models.Model):
     link_instagram = models.URLField(
         blank=True,
         verbose_name="Link do Post no Instagram (Opcional)",
-        help_text="Caso a foto tenha uma publicação no @aapocmt correspondente.",
+        help_text="Caso a foto tenha uma publicação no @aapoc.oficial correspondente.",
     )
     ativo = models.BooleanField(
         default=True,

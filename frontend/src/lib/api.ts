@@ -10,7 +10,7 @@ export type VoluntarioInput = {
   data_nascimento: string; // Formato YYYY-MM-DD
   telefone: string;
   instagram?: string;
-  endereco: string;
+  endereco?: string;
   como_deseja_ajudar: string;
   termo_lgpd_aceito: boolean;
 };
@@ -24,7 +24,7 @@ export type VoluntarioResponse = {
     data_nascimento: string;
     telefone: string;
     instagram?: string;
-    endereco: string;
+    endereco?: string;
     como_deseja_ajudar: string;
     criado_em: string;
   };

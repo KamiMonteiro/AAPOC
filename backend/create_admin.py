@@ -1,4 +1,5 @@
 import os
+import sys
 import django
 
 # Inicializa o ambiente do Django
@@ -9,33 +10,27 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-# Usuários padrão para provisionamento automático em produção
-contas = [
-    {
-        "username": os.getenv("DJANGO_SUPERUSER_USERNAME", "janaina"),
-        "email": os.getenv("DJANGO_SUPERUSER_EMAIL", "contato@aapoc.org.br"),
-        "password": os.getenv("DJANGO_SUPERUSER_PASSWORD", "admin"),
-    },
-    {
-        "username": "admin",
-        "email": "admin@aapoc.org.br",
-        "password": "admin",
-    },
-]
+username = os.getenv("DJANGO_SUPERUSER_USERNAME", "").strip()
+email = os.getenv("DJANGO_SUPERUSER_EMAIL", "").strip()
+password = os.getenv("DJANGO_SUPERUSER_PASSWORD", "").strip()
 
-for conta in contas:
-    usuario = User.objects.filter(username=conta["username"]).first()
-    if not usuario:
-        User.objects.create_superuser(
-            username=conta["username"],
-            email=conta["email"],
-            password=conta["password"],
-        )
-        print(f"Superusuário '{conta['username']}' criado com sucesso!")
-    else:
-        # Garante que a senha configurada funcione
-        usuario.set_password(conta["password"])
-        usuario.is_staff = True
-        usuario.is_superuser = True
-        usuario.save()
-        print(f"Superusuário '{conta['username']}' atualizado com sucesso!")
+if not username or not email or not password:
+    print(
+        "Erro: defina DJANGO_SUPERUSER_USERNAME, DJANGO_SUPERUSER_EMAIL e "
+        "DJANGO_SUPERUSER_PASSWORD nas variáveis de ambiente antes de executar este script."
+    )
+    sys.exit(1)
+
+if len(password) < 8:
+    print("Erro: DJANGO_SUPERUSER_PASSWORD deve possuir no mínimo 8 caracteres.")
+    sys.exit(1)
+
+if User.objects.filter(username=username).exists():
+    print(f"Superusuário '{username}' já existe. Nenhuma senha foi sobrescrita.")
+else:
+    User.objects.create_superuser(
+        username=username,
+        email=email,
+        password=password,
+    )
+    print(f"Superusuário '{username}' criado com sucesso!")
